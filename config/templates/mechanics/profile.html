@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{{ mechanic.user.username }}'s Profile</h2>
+{% if mechanic.profile_image %}
+    <img src="{{ mechanic.profile_image.url }}" alt="Profile Image" width="100">
+{% endif %}
+<p>Specialties: {{ mechanic.specialties }}</p>
+<p>Hourly Rate: KES {{ mechanic.hourly_rate }}</p>
+<p>Bio: {{ mechanic.bio }}</p>
+<p>Certifications: {{ mechanic.certifications }}</p>
+{% endblock %}

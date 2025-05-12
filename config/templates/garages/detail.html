@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{{ garage.name }}</h2>
+<p>Services: {{ garage.services }}</p>
+<p>Phone: {{ garage.phone }}</p>
+<div id="map" style="height: 400px;"></div>
+
+<script>
+    var map = L.map('map').setView([{{ garage.latitude }}, {{ garage.longitude }}], 13);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+    }).addTo(map);
+    L.marker([{{ garage.latitude }}, {{ garage.longitude }}]).addTo(map)
+        .bindPopup('{{ garage.name }}').openPopup();
+</script>
+{% endblock %}

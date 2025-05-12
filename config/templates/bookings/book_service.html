@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h2>Book Service with {{ mechanic.user.username }}</h2>
+<p>Time: {{ time_slot.start_time }} - {{ time_slot.end_time }}</p>
+<form method="POST">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit" class="btn btn-primary">Confirm Booking</button>
+</form>
+{% endblock %}

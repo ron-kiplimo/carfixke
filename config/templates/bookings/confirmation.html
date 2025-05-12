@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Booking Confirmed</h2>
+<p>Thank you, {{ booking.customer.username }}!</p>
+<p>Service: {{ booking.service_type }}</p>
+<p>Mechanic: {{ booking.mechanic.user.username }}</p>
+<p>Time: {{ booking.time_slot.start_time }} - {{ booking.time_slot.end_time }}</p>
+<p>A confirmation email has been sent to {{ booking.customer.email }}.</p>
+{% endblock %}
