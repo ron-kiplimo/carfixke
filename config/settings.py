@@ -1,8 +1,10 @@
 from pathlib import Path
-from decouple import config
-
 # Build paths inside the project like this: BASE_DIR / 'folder'
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
+
+from decouple import config
+
+
 
 # Add project root to Python path
 import sys
@@ -85,8 +87,13 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / 'static']
+
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+]
+
 
 # Media files (Images uploaded by users)
 MEDIA_URL = '/media/'
@@ -100,3 +107,5 @@ AUTH_USER_MODEL = 'users.User'
 
 # Email backend (for development)
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+LOGOUT_REDIRECT_URL = 'mechanics'

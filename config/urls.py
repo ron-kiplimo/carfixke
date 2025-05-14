@@ -1,13 +1,13 @@
 from django.contrib import admin
 from django.urls import path, include
-from django.views.generic.base import RedirectView
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
-    path('', RedirectView.as_view(url='/mechanics/', permanent=False), name='home'),  # Redirect to mechanics
     path('admin/', admin.site.urls),
-    path('bookings/', include('bookings.urls')),
     path('garages/', include('garages.urls')),
-    path('mechanics/', include('mechanics.urls')),
+    path('bookings/', include('bookings.urls')),
     path('reviews/', include('reviews.urls')),
     path('users/', include('users.urls')),
-]
+    path('', include('mechanics.urls')),  # Assuming home page routes through mechanics
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
